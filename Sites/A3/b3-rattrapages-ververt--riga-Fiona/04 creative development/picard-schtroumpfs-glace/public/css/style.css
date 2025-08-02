@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #4169E1 50%, #191970 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 0;
+    position: relative;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 3px 3px 0 #000, 0 0 20px #4169E1;
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #E6F3FF;
+    text-shadow: 1px 1px 0 #000;
+    margin-bottom: 40px;
+}
+
+.glace-icon, .schtroumpf-icon {
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+.schtroumpf-icon {
+    animation-delay: 1s;
+}
+
+/* Glace 3D */
+.glace-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    cursor: pointer;
+}
+
+.glace-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: float 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.glace-3d:hover {
+    transform: rotateY(15deg) scale(1.1);
+}
+
+.baton {
+    width: 10px;
+    height: 100px;
+    background: linear-gradient(to bottom, #DEB887, #CD853F);
+    border-radius: 5px;
+    margin: 0 auto;
+    box-shadow: inset -2px 0 5px rgba(0,0,0,0.3);
+}
+
+.glace-corps {
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(45deg, #4169E1 0%, #6495ED 50%, #4169E1 100%);
+    border-radius: 40px 40px 20px 20px;
+    position: relative;
+    margin: -10px auto 0;
+    box-shadow: 
+        inset -10px 0 20px rgba(0,0,0,0.2),
+        0 10px 30px rgba(65,105,225,0.5);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.glace-corps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        20px 10px 0 2px white,
+        35px 5px 0 1px white,
+        10px 40px 0 1px white,
+        30px 35px 0 2px white,
+        50px 25px 0 1px white;
+    opacity: 0.8;
+}
+
+.reflets {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 40px;
+    background: linear-gradient(45deg, rgba(255,255,255,0.6), transparent);
+    border-radius: 10px;
+    animation: reflet 2s ease-in-out infinite;
+}
+
+.gouttes {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 8px;
+    background: #4169E1;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: goutte 3s ease-in-out infinite;
+}
+
+/* Cards */
+.details {
+    margin: 60px 0;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(65,105,225,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+}
+
+.card h3 {
+    color: #4169E1;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Ingrédients */
+.ingredients-list {
+    list-style: none;
+}
+
+.ingredients-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #E6F3FF;
+    position: relative;
+    padding-left: 25px;
+}
+
+.ingredients-list li::before {
+    content: '🌟';
+    position: absolute;
+    left: 0;
+}
+
+/* Nutrition */
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.nutrition-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #E6F3FF;
+    border-radius: 10px;
+}
+
+.label {
+    font-weight: bold;
+    color: #4169E1;
+}
+
+.value {
+    color: #2C5282;
+}
+
+/* Commande */
+.price-tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border-radius: 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 2rem;
+}
+
+.rating {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-form label {
+    font-weight: bold;
+    color: #4169E1;
+}
+
+.order-form input {
+    padding: 10px;
+    border: 2px solid #4169E1;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.btn-commander {
+    background: linear-gradient(45deg, #4169E1, #6495ED);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-commander:hover {
+    background: linear-gradient(45deg, #2C5282, #4169E1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(65,105,225,0.4);
+}
+
+.message-commande {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.message-commande.success {
+    background: #C6F6D5;
+    color: #22543D;
+}
+
+.message-commande.error {
+    background: #FED7D7;
+    color: #C53030;
+}
+
+/* Avis */
+.avis {
+    margin: 60px 0;
+}
+
+.avis h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
+    margin-bottom: 40px;
+}
+
+.avis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.avis-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.avis-card:hover {
+    transform: translateY(-5px);
+}
+
+.avis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.nom {
+    font-weight: bold;
+    color: #4169E1;
+}
+
+.avis-card .stars {
+    color: #FFD700;
+}
+
+/* Particules */
+.particules {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particule {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    animation: particule-fall 10s linear infinite;
+}
+
+/* Animations */
+@keyframes glow {
+    0% { text-shadow: 3px 3px 0 #000, 0 0 20px #4169E1; }
+    100% { text-shadow: 3px 3px 0 #000, 0 0 40px #4169E1, 0 0 60px #4169E1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotateY(0deg); }
+    50% { transform: translateY(-20px) rotateY(5deg); }
+}
+
+@keyframes shimmer {
+    0%, 100% { box-shadow: inset -10px 0 20px rgba(0,0,0,0.2), 0 10px 30px rgba(65,105,225,0.5); }
+    50% { box-shadow: inset -10px 0 20px rgba(0,0,0,0.1), 0 10px 30px rgba(65,105,225,0.8); }
+}
+
+@keyframes reflet {
+    0%, 100% { opacity: 0.6; transform: translateX(0); }
+    50% { opacity: 0.9; transform: translateX(5px); }
+}
+
+@keyframes goutte {
+    0% { opacity: 0; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
+
+@keyframes particule-fall {
+    0% { 
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+        .nutrition-grid {
+            grid-template-columns: 1fr;
+        }
+    }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= glace.nom %> - Picard x Schtroumpfs</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header animé -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="glace-icon">🧊</span>
+                    <%= glace.nom %>
+                    <span class="schtroumpf-icon">🔵</span>
+                </h1>
+                <p class="hero-subtitle"><%= glace.description %></p>
+            </div>
+            
+            <!-- Glace 3D interactive -->
+            <div class="glace-container" id="glaceContainer">
+                <div class="glace-3d">
+                    <div class="baton"></div>
+                    <div class="glace-corps"></div>
+                    <div class="reflets"></div>
+                    <div class="gouttes"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section détails -->
+        <section class="details">
+            <div class="details-grid">
+                <!-- Ingrédients -->
+                <div class="card ingredients-card">
+                    <h3>🌿 Ingrédients Magiques</h3>
+                    <ul class="ingredients-list">
+                        <% glace.ingredients.forEach(ingredient => { %>
+                            <li><%= ingredient %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+
+                <!-- Valeurs nutritionnelles -->
+                <div class="card nutrition-card">
+                    <h3>📊 Valeurs Nutritionnelles</h3>
+                    <div class="nutrition-grid">
+                        <div class="nutrition-item">
+                            <span class="label">Calories:</span>
+                            <span class="value"><%= glace.valeurs_nutritionnelles.calories %></span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="label">Sucres:</span>
+                            <span class="value"><%= glace.valeurs_nutritionnelles.sucres %></span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="label">Matières grasses:</span>
+                            <span class="value"><%= glace.valeurs_nutritionnelles.matieres_grasses %></span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="label">Additifs:</span>
+                            <span class="value"><%= glace.valeurs_nutritionnelles.additifs %></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commande -->
+                <div class="card order-card">
+                    <h3>🛒 Commander</h3>
+                    <div class="price-tag">
+                        <span class="price"><%= glace.prix %></span>
+                        <span class="stock">Stock: <span id="stockCount"><%= glace.stock %></span></span>
+                    </div>
+                    
+                    <div class="rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="note"><%= glace.note %>/5</span>
+                    </div>
+
+                    <div class="order-form">
+                        <label for="quantite">Quantité:</label>
+                        <input type="number" id="quantite" min="1" max="<%= glace.stock %>" value="1">
+                        <button id="commanderBtn" class="btn-commander">
+                            Schtroumpfer ma commande ! 🧊
+                        </button>
+                    </div>
+                    
+                    <div id="messageCommande" class="message-commande"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avis clients -->
+        <section class="avis">
+            <h3>💬 Avis Schtroumpfants</h3>
+            <div class="avis-grid">
+                <% glace.avis.forEach(avis => { %>
+                    <div class="avis-card">
+                        <div class="avis-header">
+                            <span class="nom"><%= avis.nom %></span>
+                            <div class="stars">
+                                <% for(let i = 0; i < avis.note; i++) { %>★<% } %>
+                                <% for(let i = avis.note; i < 5; i++) { %>☆<% } %>
+                            </div>
+                        </div>
+                        <p class="commentaire">"<%= avis.commentaire %>"</p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+
+        <!-- Effet particules -->
+        <div class="particules" id="particules"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
