@@ -1,41 +1,42 @@
-# 04 - Création Développement
+# 04 - Creative Development
 
-## Projet : Picard Schtroumpfs Glace
+## Project: Picard Smurfs Ice
 
-Présentation interactive de la glace à l'eau mûre Picard x Schtroumpfs.
+Interactive presentation of Picard x Smurfs blackberry water ice.
 
 ### Description
 
-Ce projet présente une page web interactive pour la promotion de la collaboration entre Picard et les Schtroumpfs pour une nouvelle gamme de glaces à l'eau.
+This project presents an interactive web page for promoting the collaboration between Picard and the Smurfs for a new line of water ice.
 
-### Technologies utilisées
+### Technologies Used
 
-- **Node.js** - Runtime JavaScript
-- **Express.js** - Framework web
-- **EJS** - Moteur de template
+- **Node.js** - JavaScript Runtime
+- **Express.js** - Web Framework
+- **EJS** - Template Engine
 - **HTML/CSS/JavaScript** - Frontend
 
 ### Installation
 
-1. Naviguez dans le dossier du projet :
+1. Navigate to the project folder:
 ```bash
 cd 04-creation-developpement
 ```
 
-2. Installez les dépendances :
+2. Install dependencies:
 ```bash
 npm install
 ```
-### Utilisation
-```
-#### Mode production
+
+### Usage
+
+#### Production mode
 ```bash
 npm start
 ```
 
-Le serveur sera accessible sur `http://localhost:3000`
+The server will be accessible on `http://localhost:3000`
 
-### Structure du projet
+### Project Structure
 
 ```
 04-creation-developpement/
@@ -51,9 +52,9 @@ Le serveur sera accessible sur `http://localhost:3000`
 └── readme.md
 ```
 
-### Auteur
+### Author
 
 Fiona Ververt-Riga 
 
-vidéo 
+video 
 https://youtu.be/sRhUdzFRMBQ

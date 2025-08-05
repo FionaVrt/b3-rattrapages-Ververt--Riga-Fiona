@@ -1,37 +1,37 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= glace.nom %> - Picard x Schtroumpfs
+        <%= ice.name %> - Picard x Smurfs
     </title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <div class="container">
-        <!-- Header animé -->
+        <!-- Animated Header -->
         <header class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="glace-icon">🧊</span>
-                    <%= glace.nom %>
-                        <span class="schtroumpf-icon">🔵</span>
+                    <span class="ice-icon">🧊</span>
+                    <%= ice.name %>
+                        <span class="smurf-icon">🔵</span>
                 </h1>
                 <p class="hero-subtitle">
-                    <%= glace.description %>
+                    <%= ice.description %>
                 </p>
             </div>
 
-            <!-- Glace 3D interactive -->
-            <div class="glace-container" id="glaceContainer">
-                <div class="glace-3d">
-                    <div class="baton"></div>
-                    <div class="glace-corps"></div>
-                    <div class="reflets"></div>
-                    <div class="gouttes"></div>
+            <!-- Interactive 3D ice cream -->
+            <div class="ice-container" id="iceContainer">
+                <div class="ice-3d">
+                    <div class="stick"></div>
+                    <div class="ice-body"></div>
+                    <div class="reflections"></div>
+                    <div class="drops"></div>
                 </div>
             </div>
         </header>
@@ -41,9 +41,9 @@
             <div class="details-grid">
                 <!-- Ingredients -->
                 <div class="card ingredients-card">
-                    <h3>🌿 Ingrédients Magiques</h3>
+                    <h3>🌿 Magical Ingredients</h3>
                     <ul class="ingredients-list">
-                        <% glace.ingredients.forEach(ingredient=> { %>
+                        <% ice.ingredients.forEach(ingredient=> { %>
                             <li>
                                 <%= ingredient %>
                             </li>
@@ -51,9 +51,9 @@
                     </ul>
                 </div>
 
-                <!-- Animation Interactive -->
+                <!-- Interactive Animation -->
                 <div class="card animation-card" id="animationCard">
-                    <h3>✨ Magie Schtroumpf</h3>
+                    <h3>✨ Smurf Magic</h3>
                     <div class="animation-content">
                         <div class="magic-circle">
                             <div class="sparkle sparkle-1">✨</div>
@@ -62,65 +62,65 @@
                             <div class="sparkle sparkle-4">🌟</div>
                             <div class="center-emoji">🧊</div>
                         </div>
-                        <p class="magic-text">Cliquez pour révéler la magie !</p>
+                        <p class="magic-text">Click to reveal the magic!</p>
                     </div>
                 </div>
 
-                <!-- Commande -->
+                <!-- Order -->
                 <div class="card order-card">
-                    <h3>🛒 Commander</h3>
+                    <h3>🛒 Order</h3>
                     <div class="price-tag">
                         <span class="price">
-                            <%= glace.prix %>
+                            <%= ice.price %>
                         </span>
                         <span class="stock">Stock: <span id="stockCount">
-                                <%= glace.stock %>
+                                <%= ice.stock %>
                             </span></span>
                     </div>
 
                     <div class="rating">
                         <span class="stars">★★★★★</span>
-                        <span class="note">
-                            <%= glace.note %>/5
+                        <span class="rating-value">
+                            <%= ice.rating %>/5
                         </span>
                     </div>
 
                     <div class="order-form">
-                        <label for="quantite">Quantité:</label>
-                        <input type="number" id="quantite" min="1" max="<%= glace.stock %>" value="1">
-                        <button id="commanderBtn" class="btn-commander">
-                            Schtroumpfer ma commande ! 🧊
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" min="1" max="<%= ice.stock %>" value="1">
+                        <button id="orderBtn" class="btn-order">
+                            Smurf my order! 🧊
                         </button>
                     </div>
 
-                    <div id="messageCommande" class="message-commande"></div>
+                    <div id="orderMessage" class="order-message"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Avis clients -->
-        <section class="avis">
-            <h3>💬 Avis Schtroumpfants</h3>
-            <div class="avis-grid">
-                <% glace.avis.forEach(avis=> { %>
-                    <div class="avis-card">
-                        <div class="avis-header">
-                            <span class="nom">
-                                <%= avis.nom %>
+        <!-- Customer reviews -->
+        <section class="reviews">
+            <h3>💬 Smurfy Reviews</h3>
+            <div class="reviews-grid">
+                <% ice.reviews.forEach(review=> { %>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="name">
+                                <%= review.name %>
                             </span>
                             <div class="stars">
-                                <% for(let i=0; i < avis.note; i++) { %>★<% } %>
-                                        <% for(let i=avis.note; i < 5; i++) { %>☆<% } %>
+                                <% for(let i=0; i < review.rating; i++) { %>★<% } %>
+                                        <% for(let i=review.rating; i < 5; i++) { %>☆<% } %>
                             </div>
                         </div>
-                        <p class="commentaire">"<%= avis.commentaire %>"</p>
+                        <p class="comment">"<%= review.comment %>"</p>
                     </div>
                     <% }); %>
             </div>
         </section>
 
-        <!-- Effet particules -->
-        <div class="particules" id="particules"></div>
+        <!-- Particle effect -->
+        <div class="particles" id="particles"></div>
     </div>
 
     <script src="/js/app.js"></script>

@@ -40,17 +40,17 @@ body {
     margin-bottom: 40px;
 }
 
-.glace-icon, .schtroumpf-icon {
+.ice-icon, .smurf-icon {
     display: inline-block;
     animation: bounce 2s infinite;
 }
 
-.schtroumpf-icon {
+.smurf-icon {
     animation-delay: 1s;
 }
 
-/* Glace 3D */
-.glace-container {
+/* Ice 3D */
+.ice-container {
     position: relative;
     display: flex;
     justify-content: center;
@@ -58,18 +58,18 @@ body {
     cursor: pointer;
 }
 
-.glace-3d {
+.ice-3d {
     position: relative;
     transform-style: preserve-3d;
     animation: float 4s ease-in-out infinite;
     transition: transform 0.3s ease;
 }
 
-.glace-3d:hover {
+.ice-3d:hover {
     transform: rotateY(15deg) scale(1.1);
 }
 
-.baton {
+.stick {
     width: 10px;
     height: 100px;
     background: linear-gradient(to bottom, #DEB887, #CD853F);
@@ -78,7 +78,7 @@ body {
     box-shadow: inset -2px 0 5px rgba(0,0,0,0.3);
 }
 
-.glace-corps {
+.ice-body {
     width: 80px;
     height: 120px;
     background: linear-gradient(45deg, #4169E1 0%, #6495ED 50%, #4169E1 100%);
@@ -91,7 +91,7 @@ body {
     animation: shimmer 3s ease-in-out infinite;
 }
 
-.glace-corps::before {
+.ice-body::before {
     content: '';
     position: absolute;
     top: 20px;
@@ -120,7 +120,7 @@ body {
     animation: reflet 2s ease-in-out infinite;
 }
 
-.gouttes {
+.drops {
     position: absolute;
     bottom: -5px;
     left: 50%;
@@ -129,7 +129,7 @@ body {
     height: 8px;
     background: #4169E1;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: goutte 3s ease-in-out infinite;
+    animation: drop 3s ease-in-out infinite;
 }
 
 /* Cards */
@@ -269,7 +269,7 @@ body {
     font-size: 1rem;
 }
 
-.btn-commander {
+.btn-order {
     background: linear-gradient(45deg, #4169E1, #6495ED);
     color: white;
     border: none;
@@ -282,13 +282,13 @@ body {
     text-transform: uppercase;
 }
 
-.btn-commander:hover {
+.btn-order:hover {
     background: linear-gradient(45deg, #2C5282, #4169E1);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(65,105,225,0.4);
 }
 
-.message-commande {
+.order-message {
     margin-top: 15px;
     padding: 10px;
     border-radius: 10px;
@@ -296,22 +296,22 @@ body {
     font-weight: bold;
 }
 
-.message-commande.success {
+.order-message.success {
     background: #C6F6D5;
     color: #22543D;
 }
 
-.message-commande.error {
+.order-message.error {
     background: #FED7D7;
     color: #C53030;
 }
 
-/* Avis */
-.avis {
+/* Reviews */
+.reviews {
     margin: 60px 0;
 }
 
-.avis h3 {
+.reviews h3 {
     text-align: center;
     font-size: 2.5rem;
     color: white;
@@ -319,13 +319,13 @@ body {
     margin-bottom: 40px;
 }
 
-.avis-grid {
+.reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.avis-card {
+.review-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     padding: 20px;
@@ -333,28 +333,28 @@ body {
     transition: transform 0.3s ease;
 }
 
-.avis-card:hover {
+.review-card:hover {
     transform: translateY(-5px);
 }
 
-.avis-header {
+.review-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.nom {
+.name {
     font-weight: bold;
     color: #4169E1;
 }
 
-.avis-card .stars {
+.review-card .stars {
     color: #FFD700;
 }
 
-/* Particules */
-.particules {
+/* Particles */
+.particles {
     position: fixed;
     top: 0;
     left: 0;
@@ -364,11 +364,11 @@ body {
     z-index: -1;
 }
 
-.particule {
+.particle {
     position: absolute;
     color: rgba(255, 255, 255, 0.8);
     font-size: 20px;
-    animation: particule-fall 10s linear infinite;
+    animation: particle-fall 10s linear infinite;
 }
 
 /* Animations */
@@ -398,13 +398,13 @@ body {
     50% { opacity: 0.9; transform: translateX(5px); }
 }
 
-@keyframes goutte {
+@keyframes drop {
     0% { opacity: 0; transform: translateX(-50%) translateY(0); }
     50% { opacity: 1; }
     100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
 }
 
-@keyframes particule-fall {
+@keyframes particle-fall {
     0% { 
         transform: translateY(-100vh) rotate(0deg);
         opacity: 1;
@@ -439,7 +439,7 @@ body {
     }
 }
 
-/* Animation Interactive Card */
+/* Animated interactive map */
 .animation-card {
     cursor: pointer;
     transition: all 0.3s ease;

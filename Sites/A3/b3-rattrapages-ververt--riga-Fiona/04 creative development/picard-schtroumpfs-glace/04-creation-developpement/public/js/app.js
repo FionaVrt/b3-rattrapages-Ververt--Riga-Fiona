@@ -1,73 +1,73 @@
-class GlaceApp {
+class IceApp {
     constructor() {
         this.initEventListeners();
-        this.createParticules();
-        this.animateGlace();
+        this.createParticles();
+        this.animateIce();
     }
 
     initEventListeners() {
-        const commanderBtn = document.getElementById('commanderBtn');
-        const glaceContainer = document.getElementById('glaceContainer');
+        const orderBtn = document.getElementById('orderBtn');
+        const iceContainer = document.getElementById('iceContainer');
         const animationCard = document.getElementById('animationCard');
 
-        commanderBtn.addEventListener('click', () => this.commander());
-        glaceContainer.addEventListener('click', () => this.animateGlaceClick());
+        orderBtn.addEventListener('click', () => this.order());
+        iceContainer.addEventListener('click', () => this.animateIceClick());
 
-        // Animation interactive pour la nouvelle carte
+        // Interactive animation for the new card
         if (animationCard) {
             animationCard.addEventListener('click', () => this.triggerMagicAnimation());
         }
 
-        // Animation au scroll
+        // Scroll animation
         window.addEventListener('scroll', () => this.handleScroll());
     }
 
-    async commander() {
-        const quantite = parseInt(document.getElementById('quantite').value);
-        const messageDiv = document.getElementById('messageCommande');
+    async order() {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        const messageDiv = document.getElementById('orderMessage');
         const stockSpan = document.getElementById('stockCount');
 
         try {
-            const response = await fetch('/api/commander', {
+            const response = await fetch('/api/order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ quantite })
+                body: JSON.stringify({ quantity })
             });
 
             const data = await response.json();
 
             if (data.success) {
                 messageDiv.textContent = data.message;
-                messageDiv.className = 'message-commande success';
-                stockSpan.textContent = data.nouveauStock;
+                messageDiv.className = 'order-message success';
+                stockSpan.textContent = data.newStock;
 
-                // Animation de succès
+                // Success animation
                 this.celebrationAnimation();
             } else {
                 messageDiv.textContent = data.message;
-                messageDiv.className = 'message-commande error';
+                messageDiv.className = 'order-message error';
             }
         } catch (error) {
-            messageDiv.textContent = 'Erreur lors de la commande';
-            messageDiv.className = 'message-commande error';
+            messageDiv.textContent = 'Error during order';
+            messageDiv.className = 'order-message error';
         }
     }
 
-    animateGlaceClick() {
-        const glace = document.querySelector('.glace-3d');
-        glace.style.animation = 'none';
+    animateIceClick() {
+        const ice = document.querySelector('.ice-3d');
+        ice.style.animation = 'none';
         setTimeout(() => {
-            glace.style.animation = 'float 4s ease-in-out infinite';
+            ice.style.animation = 'float 4s ease-in-out infinite';
         }, 10);
 
-        // Créer des étincelles
+        // Create sparks
         this.createSparkles();
     }
 
     createSparkles() {
-        const container = document.querySelector('.glace-container');
+        const container = document.querySelector('.ice-container');
         for (let i = 0; i < 8; i++) {
             setTimeout(() => {
                 const sparkle = document.createElement('div');
@@ -87,7 +87,7 @@ class GlaceApp {
     }
 
     celebrationAnimation() {
-        // Confettis
+        // Confetti
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {
                 this.createConfetti();
@@ -116,19 +116,19 @@ class GlaceApp {
         const animationCard = document.getElementById('animationCard');
         const magicText = animationCard.querySelector('.magic-text');
 
-        // Toggle de la classe active
+        // Toggle the active class
         animationCard.classList.toggle('active');
 
         if (animationCard.classList.contains('active')) {
-            magicText.textContent = '✨ Magie activée ! ✨';
+            magicText.textContent = '✨ Magic activated! ✨';
 
-            // Créer des particules magiques
+            // Create magical particles
             this.createMagicParticles();
 
-            // Désactiver après 3 secondes
+            // Disable after 3 seconds
             setTimeout(() => {
                 animationCard.classList.remove('active');
-                magicText.textContent = 'Cliquez pour révéler la magie !';
+                magicText.textContent = 'Click to reveal the magic!';
             }, 3000);
         }
     }
@@ -137,7 +137,7 @@ class GlaceApp {
         const animationCard = document.getElementById('animationCard');
         const cardRect = animationCard.getBoundingClientRect();
 
-        // Créer plusieurs particules magiques
+        // Create multiple magical particles
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {
                 const particle = document.createElement('div');
@@ -157,32 +157,32 @@ class GlaceApp {
         }
     }
 
-    createParticules() {
-        const particules = document.getElementById('particules');
+    createParticles() {
+        const particles = document.getElementById('particles');
 
         setInterval(() => {
             if (Math.random() < 0.3) {
-                const particule = document.createElement('div');
-                particule.className = 'particule';
-                particule.innerHTML = Math.random() < 0.5 ? '❄️' : '✨';
-                particule.style.left = Math.random() * window.innerWidth + 'px';
-                particule.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.innerHTML = Math.random() < 0.5 ? '❄️' : '✨';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
 
-                particules.appendChild(particule);
+                particles.appendChild(particle);
 
-                setTimeout(() => particule.remove(), 10000);
+                setTimeout(() => particle.remove(), 10000);
             }
         }, 500);
     }
 
-    animateGlace() {
-        // Animation supplémentaire pour la glace
+    animateIce() {
+        // Additional animation for the ice
         setInterval(() => {
-            const gouttes = document.querySelector('.gouttes');
-            if (gouttes) {
-                gouttes.style.animation = 'none';
+            const drops = document.querySelector('.drops');
+            if (drops) {
+                drops.style.animation = 'none';
                 setTimeout(() => {
-                    gouttes.style.animation = 'goutte 3s ease-in-out infinite';
+                    drops.style.animation = 'drop 3s ease-in-out infinite';
                 }, 100);
             }
         }, 8000);
@@ -190,23 +190,23 @@ class GlaceApp {
 
     handleScroll() {
         const scrolled = window.pageYOffset;
-        const glace = document.querySelector('.glace-3d');
+        const ice = document.querySelector('.ice-3d');
 
-        if (glace) {
+        if (ice) {
             const rotation = scrolled * 0.1;
-            glace.style.transform = `rotateY(${rotation}deg)`;
+            ice.style.transform = `rotateY(${rotation}deg)`;
         }
     }
 }
 
-// Initialisation
+// Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    new GlaceApp();
+    new IceApp();
 
-    // Message de bienvenue
+    // Welcome message
     setTimeout(() => {
-        if (confirm('🧊 Bienvenue ! Voulez-vous découvrir notre glace à l\'eau mûre Schtroumpf ? Cliquez sur la glace pour des effets magiques ! ✨')) {
-            document.querySelector('.glace-container').scrollIntoView({
+        if (confirm('🧊 Welcome! Would you like to discover our Smurf blackberry water ice? Click on the ice for magical effects! ✨')) {
+            document.querySelector('.ice-container').scrollIntoView({
                 behavior: 'smooth'
             });
         }

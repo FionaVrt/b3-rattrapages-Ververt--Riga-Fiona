@@ -9,61 +9,61 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Données produit
-const glaceData = {
-    nom: "Glace à l'eau Mûre Schtroumpf",
-    description: "Une explosion de saveur mûre dans une glace à l'eau d'un bleu Schtroumpf magique !",
-    couleur: "#4169E1",
+// Product data
+const iceData = {
+    name: "Smurf Blackberry Water Ice",
+    description: "An explosion of blackberry flavor in a magical Smurf blue water ice!",
+    color: "#4169E1",
     ingredients: [
-        "Eau purifiée de source",
-        "Jus de mûre concentré",
-        "Sucre de canne",
-        "Colorant naturel bleu",
-        "Arôme naturel de mûre",
-        "Un soupçon de magie Schtroumpf ✨"
+        "Purified spring water",
+        "Concentrated blackberry juice",
+        "Cane sugar",
+        "Natural blue coloring",
+        "Natural blackberry flavor",
+        "A touch of Smurf magic ✨"
     ],
-    valeurs_nutritionnelles: {
+    nutritional_values: {
         calories: "45 kcal/100ml",
-        sucres: "11g/100ml",
-        matieres_grasses: "0g",
-        additifs: "Sans conservateurs"
+        sugars: "11g/100ml",
+        fats: "0g",
+        additives: "No preservatives"
     },
-    prix: "3.99€",
+    price: "3.99€",
     stock: 156,
-    note: 4.8,
-    avis: [
-        { nom: "Schtroumpf Gourmand", commentaire: "Schtroumpfement délicieuse !", note: 5 },
-        { nom: "Marie L.", commentaire: "Mes enfants adorent, le goût est authentique !", note: 5 },
-        { nom: "Schtroumpf à Lunettes", commentaire: "La couleur est parfaite et le goût rafraîchissant.", note: 4 }
+    rating: 4.8,
+    reviews: [
+        { name: "Greedy Smurf", comment: "Smurfingly delicious!", rating: 5 },
+        { name: "Marie L.", comment: "My children love it, the taste is authentic!", rating: 5 },
+        { name: "Brainy Smurf", comment: "Perfect color and refreshing taste.", rating: 4 }
     ]
 };
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index', { glace: glaceData });
+    res.render('index', { ice: iceData });
 });
 
-// API pour la commande
-app.post('/api/commander', (req, res) => {
-    const { quantite } = req.body;
+// API for ordering
+app.post('/api/order', (req, res) => {
+    const { quantity } = req.body;
 
-    if (quantite && quantite > 0 && quantite <= glaceData.stock) {
-        glaceData.stock -= quantite;
+    if (quantity && quantity > 0 && quantity <= iceData.stock) {
+        iceData.stock -= quantity;
         res.json({
             success: true,
-            message: `Schtroumpfement commandé ! ${quantite} glace(s) ajoutée(s) au panier.`,
-            nouveauStock: glaceData.stock
+            message: `Smurfingly ordered! ${quantity} ice(s) added to cart.`,
+            newStock: iceData.stock
         });
     } else {
         res.json({
             success: false,
-            message: "Quantité invalide ou stock insuffisant !"
+            message: "Invalid quantity or insufficient stock!"
         });
     }
 });
 
-// Démarrage du serveur
+// Server startup
 app.listen(PORT, () => {
-    console.log(`🧊 Serveur Schtroumpf démarré sur http://localhost:${PORT}`);
-    console.log('Prêt à servir des glaces schtroumpfantes ! 🔵');
+    console.log(`🧊 Smurf Server started on http://localhost:${PORT}`);
+    console.log('Ready to serve smurfy ices! 🔵');
 });
