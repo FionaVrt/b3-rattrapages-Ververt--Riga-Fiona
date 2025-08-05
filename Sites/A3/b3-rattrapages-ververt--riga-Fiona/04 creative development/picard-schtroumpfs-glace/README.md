@@ -51,8 +51,12 @@ Le serveur sera accessible sur `http://localhost:3000`
 └── readme.md
 ```
 
+### Démonstration
+
+🎥 **Vidéo de démonstration** : [Voir la démonstration](LIEN_VIDEO_ICI)
+
 ### Auteur
 
-Fiona Ververt-Riga
+Fiona Ververt-Riga 
 
-lien de la vidéo 
+https://youtu.be/sRhUdzFRMBQ
