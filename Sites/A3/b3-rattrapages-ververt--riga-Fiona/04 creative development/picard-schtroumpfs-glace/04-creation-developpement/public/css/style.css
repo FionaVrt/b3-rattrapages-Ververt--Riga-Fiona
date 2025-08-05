@@ -109,7 +109,7 @@ body {
     opacity: 0.8;
 }
 
-.reflets {
+.reflections {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -117,7 +117,7 @@ body {
     height: 40px;
     background: linear-gradient(45deg, rgba(255,255,255,0.6), transparent);
     border-radius: 10px;
-    animation: reflet 2s ease-in-out infinite;
+    animation: reflection 2s ease-in-out infinite;
 }
 
 .drops {
@@ -393,7 +393,7 @@ body {
     50% { box-shadow: inset -10px 0 20px rgba(0,0,0,0.1), 0 10px 30px rgba(65,105,225,0.8); }
 }
 
-@keyframes reflet {
+@keyframes reflection {
     0%, 100% { opacity: 0.6; transform: translateX(0); }
     50% { opacity: 0.9; transform: translateX(5px); }
 }
