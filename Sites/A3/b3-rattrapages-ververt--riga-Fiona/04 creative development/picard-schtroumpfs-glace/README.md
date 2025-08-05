@@ -26,14 +26,8 @@ cd 04-creation-developpement
 ```bash
 npm install
 ```
-
 ### Utilisation
-
-#### Mode développement
-```bash
-npm run dev
 ```
-
 #### Mode production
 ```bash
 npm start
@@ -60,3 +54,5 @@ Le serveur sera accessible sur `http://localhost:3000`
 ### Auteur
 
 Fiona Ververt-Riga
+
+lien de la vidéo 
